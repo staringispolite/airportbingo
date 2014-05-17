@@ -2,22 +2,34 @@
 <head>
 <title>Airport Bingo</title>
 <style type="text/css">
+  html {
+    background-color: #EEEEEE;
+    width: 100%;
+  }
 
   body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #EEEEEE;
     color: #262626;
     font-family: Georgia, serif;
   }
 
   h1 {
-    font-size: 72px;
+    font-size: 84px;
     font-family: 'helvetica nueue', 'arial', sans-serif;
-    margin: 20px;
+    margin: 20px 0 0 0;
     color: #191919;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-family: 'helvetica nueue', 'arial', sans-serif;
+    font-weight: normal;
+    letter-spacing: 1.1px;
+    margin: 0 0 20px 0; 
+    color: #AAAAAA; 
   }
 
   table {
@@ -26,6 +38,7 @@
     margin: auto;
     background-color: #FFFFFF;
     padding: 0px;
+    font-size: 16px;
   }
 
   td {
@@ -37,6 +50,10 @@
     height: 120px;
   }
 
+  td.selected {
+    background-color: #6fdDB1;
+  }
+
   a.selected {
     font-weight: bold;
   }
@@ -46,9 +63,8 @@
   }
 
   .footer {
-    margin-top: 30px;
+    margin: 30px 0 30px 0;
     font-family: 'helvetica nueue', 'arial', sans-serif;
-    margin-bottom: 10px;
     color: #AAAAAA;
   }
 
@@ -108,12 +124,16 @@
     "Machine can't read boarding pass",
     "TV monitor on CNN",
     "Passenger flirting with flight attendant",
-    "Famous actor, athlete, politician, etc"
+    "Famous actor, athlete, politician, etc",
+    "Passenger obviously terrified of flying",
+    "Out-of-service check-in machine",
+    "Hit by someone taking down overhead luggage"
   ];
 </script>
 </head>
 <body>
   <h1>#AirportBINGO</h1>
+  <h4>A cynical ray of sunshine in your bleak, miserable travel experience</h4>
   <table cellpadding="0" cellspacing="0">
     <tr>
       <td>
@@ -201,6 +221,10 @@
       </td>
     </tr>
   </table>
+  <div class="footer">
+    Click a square's text (or print) to play. 
+    By <a href="https://twitter.com/staringispolite">Jonathan Howard</a> &amp; friends. Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
+  </div>
 
   <script type="text/javascript">
     // "Shuffle" the deck.
@@ -227,15 +251,10 @@
         // Set up click events.
         $(sqId).click(function(event) {
           var targetId = event.currentTarget.id;
-          $('#' + targetId).toggleClass('selected');
+          $('#' + targetId).parent().toggleClass('selected');
         });
       }
     }
   </script>
-  <div class="footer">
-    Click a square's text (or print) to play.
-    By <a href="https://twitter.com/staringispolite">Jonathan Howard</a> and friends.
-    Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
-  </div>
 </body>
 </html>
