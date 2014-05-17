@@ -24,7 +24,7 @@
     width: 700px;
     height: 600px;
     margin: auto;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     padding: 0px;
   }
 
@@ -37,6 +37,10 @@
     height: 120px;
   }
 
+  a.selected {
+    font-weight: bold;
+  }
+
   #square2-2 {
     font-weight: bold;
   }
@@ -45,11 +49,15 @@
     margin-top: 30px;
     font-family: 'helvetica nueue', 'arial', sans-serif;
     margin-bottom: 10px;
-    color: #aaa;
+    color: #AAAAAA;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .footer a {
-    text-decoration: none;
     color: #009999;
   }
 
@@ -208,12 +216,20 @@
     // Add first 25 to screen.
     for (var i = 0; i < NUM_SQUARES_PER_SIDE; i++) {
       for (var j = 0; j < NUM_SQUARES_PER_SIDE; j++) {
-        var sq = $('#square' + i + '-' + j);
+        // Set up visuals.
+        var sqId = '#square' + i + '-' + j;
+        var sq = $(sqId);
         if (i == 2 && j == 2) {
           sq.html(CENTER_SQUARE);
         } else {
           sq.html(squares[i*NUM_SQUARES_PER_SIDE + j]);
         }
+        // Set up click events.
+        $(sqId).click(function(event) {
+          var targetId = event.currentTarget.id;
+          console.log('click event' + targetId);
+          $('#' + targetId).toggleClass('selected');
+        });
       }
     }
   </script>
