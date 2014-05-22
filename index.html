@@ -244,13 +244,14 @@
         } else {
           sq.html(squares[i*NUM_SQUARES_PER_SIDE + j]);
         }
-        // Set up click events.
-        $(sqId).click(function(event) {
-          var targetId = event.currentTarget.id;
-          $('#' + targetId).toggleClass('selected');
-        });
       }
     }
+
+    // Set up click events.
+    $('a').click(function(event) {
+      var targetId = event.currentTarget.id;
+      $('#' + targetId).toggleClass('selected');
+    });
   </script>
 </body>
 </html>
