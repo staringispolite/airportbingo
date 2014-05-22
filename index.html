@@ -235,19 +235,27 @@
       } 
     }
 
-    // Add first 25 to screen.
-    for (var i = 0; i < NUM_SQUARES_PER_SIDE; i++) {
-      for (var j = 0; j < NUM_SQUARES_PER_SIDE; j++) {
-        // Set up visuals.
-        var sqId = '#square' + i + '-' + j;
-        var sq = $(sqId);
-        if (i == 2 && j == 2) {
-          sq.html(CENTER_SQUARE);
-        } else {
-          sq.html(squares[i*NUM_SQUARES_PER_SIDE + j]);
+    // Add 25 squares to screen.
+    function addSquares(){
+      for (var i = 0; i < NUM_SQUARES_PER_SIDE; i++) {
+        for (var j = 0; j < NUM_SQUARES_PER_SIDE; j++) {
+          // Set up visuals.
+          var sqId = '#square' + i + '-' + j;
+          var sq = $(sqId);
+
+          // Empty squares
+          sq.empty();
+
+          if (i == 2 && j == 2) {
+            sq.html(CENTER_SQUARE);
+          } else {
+            sq.html(squares[i*NUM_SQUARES_PER_SIDE + j]);
+          }
         }
-      }
+      } 
     }
+
+    addSquares();
 
     // Set up click events.
     $('a').click(function(event) {
