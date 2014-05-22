@@ -224,13 +224,15 @@
 
   <script type="text/javascript">
     // "Shuffle" the deck.
-    var num_shuffles = 100;
-    for (var i = 0; i < num_shuffles; i++) {
-      var slot1 = Math.floor((Math.random() * squares.length));
-      var slot2 = Math.floor((Math.random() * squares.length));
-      var temp = squares[slot1];
-      squares[slot1] = squares[slot2];
-      squares[slot2] = temp;
+    function shuffleSquares(){
+      var num_shuffles = 100;
+      for (var i = 0; i < num_shuffles; i++) {
+        var slot1 = Math.floor((Math.random() * squares.length));
+        var slot2 = Math.floor((Math.random() * squares.length));
+        var temp = squares[slot1];
+        squares[slot1] = squares[slot2];
+        squares[slot2] = temp;
+      } 
     }
 
     // Add first 25 to screen.
