@@ -77,6 +77,11 @@
     text-decoration: underline;
   }
 
+  button {
+    display: block;
+    margin: 0 auto 10px;
+  }
+
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -218,6 +223,7 @@
     </tr>
   </table>
   <div class="footer">
+    <button id="shuffle">Shuffle</button>
     Click a square's text (or print) to play. 
     By <a href="https://twitter.com/staringispolite">Jonathan Howard</a> &amp; friends. Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
   </div>
@@ -262,6 +268,10 @@
     $('a').click(function(event) {
       var targetId = event.currentTarget.id;
       $('#' + targetId).toggleClass('selected');
+    });
+
+    $('#shuffle').click(function(event){
+      addSquares();
     });
   </script>
 </body>
