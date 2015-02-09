@@ -172,7 +172,7 @@
     </tr>
   </table>
   <div class="footer">
-    <button id="shuffle">Shuffle</button>
+    <button id="shuffle">New Card</button>
     Click a square's text (or print) to play. 
     By <a href="https://twitter.com/staringispolite">Jonathan Howard</a> &amp; friends. Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
   </div>
@@ -201,6 +201,7 @@
 
           // Empty squares
           sq.empty();
+          sq.removeClass('selected');
 
           if (i == 2 && j == 2) {
             sq.html(CENTER_SQUARE);
@@ -214,7 +215,7 @@
     addSquares();
 
     // Set up click events.
-    $('a').click(function(event) {
+    $('td').click(function(event) {
       var targetId = event.currentTarget.id;
       $('#' + targetId).toggleClass('selected');
     });
@@ -231,7 +232,6 @@
 
     ga('create', 'UA-51090877-1', 'staringispolite.github.io');
     ga('send', 'pageview');
-
   </script>
 </body>
 </html>
