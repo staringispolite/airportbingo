@@ -53,13 +53,6 @@
 
   td.selected {
     background-color: #6fdDB1;
-  }
-
-  td.selected {
-    background-color: #6fdDB1;
-  }
-
-  a.selected {
     font-weight: bold;
   }
 
@@ -175,7 +168,7 @@
   </table>
   <div class="footer">
     Click a square's text (or print) to play. <br/>
-    By <a href="https://twitter.com/staringispolite">Jonathan Howard</a> &amp; friends. Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
+    By <a href="http://www.staringispolite.com">Jonathan Howard</a> &amp; friends. Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
   </div>
 
   <script type="text/javascript">
@@ -203,7 +196,7 @@
         // Set up click events.
         $(sqId).click(function(event) {
           var targetId = event.currentTarget.id;
-          $('#' + targetId).parent().toggleClass('selected');
+          $('#' + targetId).toggleClass('selected');
         });
       }
     }
