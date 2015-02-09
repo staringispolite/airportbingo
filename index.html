@@ -76,6 +76,11 @@
     text-decoration: underline;
   }
 
+  button {
+    display: block;
+    margin: 0 auto 10px;
+  }
+
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -167,39 +172,56 @@
     </tr>
   </table>
   <div class="footer">
-    Click a square's text (or print) to play. <br/>
-    By <a href="http://www.staringispolite.com">Jonathan Howard</a> &amp; friends. Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
+    <button id="shuffle">Shuffle</button>
+    Click a square's text (or print) to play. 
+    By <a href="https://twitter.com/staringispolite">Jonathan Howard</a> &amp; friends. Contribute on <a href="https://github.com/staringispolite/airportbingo">Github</a>!
   </div>
 
   <script type="text/javascript">
     // "Shuffle" the deck.
-    var num_shuffles = 100;
-    for (var i = 0; i < num_shuffles; i++) {
-      var slot1 = Math.floor((Math.random() * squares.length));
-      var slot2 = Math.floor((Math.random() * squares.length));
-      var temp = squares[slot1];
-      squares[slot1] = squares[slot2];
-      squares[slot2] = temp;
+    function shuffleSquares(){
+      var num_shuffles = 100;
+      for (var i = 0; i < num_shuffles; i++) {
+        var slot1 = Math.floor((Math.random() * squares.length));
+        var slot2 = Math.floor((Math.random() * squares.length));
+        var temp = squares[slot1];
+        squares[slot1] = squares[slot2];
+        squares[slot2] = temp;
+      } 
     }
 
-    // Add first 25 to screen.
-    for (var i = 0; i < NUM_SQUARES_PER_SIDE; i++) {
-      for (var j = 0; j < NUM_SQUARES_PER_SIDE; j++) {
-        // Set up visuals.
-        var sqId = '#square' + i + '-' + j;
-        var sq = $(sqId);
-        if (i == 2 && j == 2) {
-          sq.html(CENTER_SQUARE);
-        } else {
-          sq.html(squares[i*NUM_SQUARES_PER_SIDE + j]);
+    // Add 25 squares to screen.
+    function addSquares(){
+      shuffleSquares();
+      for (var i = 0; i < NUM_SQUARES_PER_SIDE; i++) {
+        for (var j = 0; j < NUM_SQUARES_PER_SIDE; j++) {
+          // Set up visuals.
+          var sqId = '#square' + i + '-' + j;
+          var sq = $(sqId);
+
+          // Empty squares
+          sq.empty();
+
+          if (i == 2 && j == 2) {
+            sq.html(CENTER_SQUARE);
+          } else {
+            sq.html(squares[i*NUM_SQUARES_PER_SIDE + j]);
+          }
         }
-        // Set up click events.
-        $(sqId).click(function(event) {
-          var targetId = event.currentTarget.id;
-          $('#' + targetId).toggleClass('selected');
-        });
-      }
+      } 
     }
+
+    addSquares();
+
+    // Set up click events.
+    $('a').click(function(event) {
+      var targetId = event.currentTarget.id;
+      $('#' + targetId).toggleClass('selected');
+    });
+
+    $('#shuffle').click(function(event){
+      addSquares();
+    });
   </script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
